@@ -1,0 +1,57 @@
+.parallax-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.parallax-dots {
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  will-change: transform;
+}
+
+.dots-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(circle, rgb(255, 253, 253) 1.5px, transparent 1.5px);
+  background-size: 30px 30px;
+  opacity: 0.06;
+}
+
+.dots-bg-back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(circle, rgb(233, 233, 233) 1.5px, transparent 1.5px);
+  background-size: 30px 30px;
+  opacity: 0.08;
+  transform: translateZ(-1px);
+}
+
+.dots-bg-front {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(circle, rgb(233, 233, 233) 1.5px, transparent 1.5px);
+  background-size: 30px 30px;
+  opacity: 0.04;
+  transform: translateZ(1px);
+} 

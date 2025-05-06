@@ -1,0 +1,112 @@
+.about {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 2rem;
+  background-color: transparent;
+}
+
+.about-content {
+  max-width: 1200px;
+  width: 100%;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+.about-left {
+  max-width: 600px;
+}
+
+.section-title {
+  opacity: 0;
+  transform: translateX(-20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.section-title.title-visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.about-text {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.6s ease 0.2s, transform 0.6s ease 0.2s;
+}
+
+.about-text.text-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.about-cards {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease 0.3s, transform 0.6s ease 0.3s;
+}
+
+.about-cards.cards-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.skills-grid {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease 0.4s, transform 0.6s ease 0.4s;
+}
+
+.skills-grid.skills-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 1024px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .about-left {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .about {
+    padding: 30px 1rem;
+    min-height: auto;
+  }
+  
+  .about-grid {
+    gap: 1.5rem;
+  }
+  
+  /* Mobile card styles */
+  .info-card {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  /* Remove the gradient overlay for cleaner look */
+  .info-card::after {
+    display: none;
+  }
+  
+  /* Create space for bento grid */
+  .about-content {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Reduce line height for mobile text */
+  .about-text p {
+    line-height: 1.4;
+  }
+} 
