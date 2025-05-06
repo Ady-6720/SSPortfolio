@@ -139,14 +139,13 @@ section h2 {
 [class*="card"],
 [class*="border"],
 div[class*="backdrop-blur"] {
-  border-width: 2px !important;
-  border-color: rgba(255, 255, 255, 0.2) !important;
+  border-color: rgba(255, 255, 255, 0.25) !important;
 }
 
 [class*="card"]:hover,
 [class*="border"]:hover,
 div[class*="backdrop-blur"]:hover {
-  border-color: rgba(255, 255, 255, 0.3) !important;
+  border-color: rgba(255, 255, 255, 0.4) !important;
 }
 
 /* More specific card styling targets */
@@ -156,6 +155,6 @@ div[class*="backdrop-blur"]:hover {
 #projects div[class*="rounded-2xl"],
 #about div[class*="rounded-lg"],
 #about div[class*="rounded-2xl"] {
-  border-width: 2px !important;
+  border-width: 1px !important;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2) !important;
 }
