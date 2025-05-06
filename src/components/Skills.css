@@ -6,68 +6,15 @@
 /* Mobile-specific text size enhancements */
 @media (max-width: 768px) {
   #skills .text-base {
-    font-size: 1.25rem !important; /* Increased from 1.125rem */
+    font-size: 1rem; /* Reduced from 1.125rem */
   }
   
   #skills .text-lg {
-    font-size: 1.5rem !important; /* Increased from 1.25rem */
+    font-size: 1.125rem; /* Reduced from 1.25rem */
   }
   
   #skills h3 {
     letter-spacing: 0.01em;
-    font-size: 1.75rem !important;
-  }
-
-  /* Expanded skill cards for mobile */
-  #skills .border-2 {
-    border-width: 3px !important;
-  }
-
-  /* Larger padding for expanded cards */
-  #skills button {
-    padding: 1rem !important;
-  }
-
-  #skills .p-4 {
-    padding: 1.25rem !important;
-  }
-}
-
-/* Enhanced skills cards for all screen sizes */
-#skills .group {
-  transform-origin: center;
-  transition: all 0.3s ease-in-out;
-}
-
-#skills .group:hover {
-  transform: scale(1.03);
-}
-
-/* Expanded skills card styles */
-#skills .overflow-hidden > div {
-  padding: 1.5rem !important;
-}
-
-/* Skills pills size increase */
-#skills .inline-block {
-  font-size: 1.2rem !important;
-  padding: 0.5rem 1rem !important;
-}
-
-/* Desktop card styles */
-@media (min-width: 769px) {
-  #skills .p-4 {
-    padding: 1.5rem !important;
-  }
-
-  #skills h3.text-xl {
-    font-size: 1.9rem !important;
-    margin-bottom: 0.75rem !important;
-  }
-
-  /* Larger desktop cards */
-  #skills .md\:grid-cols-4 > div {
-    min-height: 350px;
   }
 }
 
