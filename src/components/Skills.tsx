@@ -201,7 +201,7 @@ const SkillPills = ({ pills, colorClass, rgbValues, isDesktop }: {
               boxShadow: `0 0 8px rgba(${rgbValues}, 0.6)`,
             }}
             className={`${colorClass} text-xs px-2 py-1 
-              rounded-lg font-medium border border-${colorName}-400/30 bg-black/30
+              rounded-lg font-medium border border-${colorName}-400 bg-black/30
               transition-all duration-300 text-center flex items-center justify-center`}
             style={{
               textShadow: `0 0 3px rgba(${rgbValues}, 0.3)`
@@ -237,7 +237,7 @@ const SkillPills = ({ pills, colorClass, rgbValues, isDesktop }: {
             }
           }}
           className={`${colorClass} inline-block text-base px-3 py-1.5 
-            rounded-full font-medium border border-${colorName}-400/30 bg-black/20
+            rounded-full font-medium border border-${colorName}-400 bg-black/20
             hover:bg-black/40 hover:text-white transition-all duration-300`}
           style={{
             textShadow: `0 0 3px rgba(${rgbValues}, 0.3)`
