@@ -29,8 +29,10 @@ body {
 
 section {
   width: 100%;
-  height: 100%;
+  min-height: 100vh;
+  height: 100vh;
   padding: 2rem;
+  scroll-margin-top: 60px;
 }
 
 /* Container wrappers */
@@ -40,19 +42,17 @@ section {
 #experience-container,
 #skills-container,
 #projects-container {
-  overflow: hidden; /* Prevent content overflow */
   position: relative;
+  scroll-margin-top: 60px;
 }
 
-/* Improve scrolling performance */
+/* Smooth scrolling enhancement */
 .main-content {
   scroll-behavior: smooth;
   scrollbar-width: thin;
   scrollbar-color: rgba(3, 169, 244, 0.5) rgba(0, 0, 0, 0.1);
   -webkit-overflow-scrolling: touch;
   overflow-x: hidden;
-  scroll-snap-type: y mandatory;
-  scroll-snap-stop: always; /* Force stopping at snap points */
 }
 
 .main-content::-webkit-scrollbar {

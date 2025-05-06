@@ -14,13 +14,13 @@ function App() {
     <>
       <ParallaxBackground />
       <Navbar />
-      <main className="main-content snap-y snap-mandatory overflow-y-scroll h-screen">
-        <div id="hero-container" className="snap-start h-screen"><Hero /></div>
-        <div id="about-container" className="snap-start h-screen"><About /></div>
-        <div id="education-container" className="snap-start h-screen"><Education /></div>
-        <div id="experience-container" className="snap-start h-screen"><Experience /></div>
-        <div id="skills-container" className="snap-start h-screen"><Skills /></div>
-        <div id="projects-container" className="snap-start h-screen"><Projects /></div>
+      <main className="main-content overflow-y-scroll h-screen scroll-smooth">
+        <div id="hero-container"><Hero /></div>
+        <div id="about-container"><About /></div>
+        <div id="education-container"><Education /></div>
+        <div id="experience-container"><Experience /></div>
+        <div id="skills-container"><Skills /></div>
+        <div id="projects-container"><Projects /></div>
       </main>
       <Footer />
     </>
