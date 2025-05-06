@@ -137,13 +137,13 @@ section h2 {
 
 /* Global card styling - make borders more visible */
 [class*="card"],
-[class*="border"],
+[class*="border"]:not([class*="rounded-lg"][class*="text-"]):not([class*="rounded-full"][class*="text-"]),
 div[class*="backdrop-blur"] {
   border-color: rgba(255, 255, 255, 0.25) !important;
 }
 
 [class*="card"]:hover,
-[class*="border"]:hover,
+[class*="border"]:hover:not([class*="rounded-lg"][class*="text-"]):not([class*="rounded-full"][class*="text-"]),
 div[class*="backdrop-blur"]:hover {
   border-color: rgba(255, 255, 255, 0.4) !important;
 }
