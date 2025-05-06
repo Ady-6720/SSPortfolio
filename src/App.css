@@ -134,3 +134,28 @@ section h2 {
   margin-bottom: 1.5rem;
   color: var(--accent-color);
 }
+
+/* Global card styling - make borders more visible */
+[class*="card"],
+[class*="border"],
+div[class*="backdrop-blur"] {
+  border-width: 2px !important;
+  border-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+[class*="card"]:hover,
+[class*="border"]:hover,
+div[class*="backdrop-blur"]:hover {
+  border-color: rgba(255, 255, 255, 0.3) !important;
+}
+
+/* More specific card styling targets */
+#experience div[class*="rounded-2xl"],
+#skills div[class*="rounded-xl"],
+#projects div[class*="rounded-xl"],
+#projects div[class*="rounded-2xl"],
+#about div[class*="rounded-lg"],
+#about div[class*="rounded-2xl"] {
+  border-width: 2px !important;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2) !important;
+}
