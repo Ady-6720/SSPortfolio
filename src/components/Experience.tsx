@@ -79,33 +79,33 @@ const CardContent = ({
   return (
     <>
       {/* Top row - title and date */}
-      <div className="flex justify-between items-start mb-1">
-        <h3 className="text-cyan-300 font-semibold text-lg">{experience.role}</h3>
-        <p className="text-right text-neutral-400 italic text-sm">{experience.duration}</p>
+      <div className="flex justify-between items-start mb-2">
+        <h3 className="text-cyan-300 font-semibold text-xl">{experience.role}</h3>
+        <p className="text-right text-neutral-400 italic text-base">{experience.duration}</p>
       </div>
       
       {/* Second row - company and location */}
-      <div className="mb-2">
-        <span className="text-white font-medium text-base bg-gradient-to-r from-purple-500/20 to-cyan-500/20 px-2 py-0.5 rounded">{experience.employer}</span>
+      <div className="mb-3">
+        <span className="text-white font-medium text-lg bg-gradient-to-r from-purple-500/20 to-cyan-500/20 px-3 py-1 rounded">{experience.employer}</span>
         {experience.location && (
-          <span className="text-neutral-400 text-sm ml-1"> · {experience.location}</span>
+          <span className="text-neutral-400 text-base ml-1.5"> · {experience.location}</span>
         )}
       </div>
 
       {/* Summary with label */}
-      <div className="mb-2">
-        <span className="text-neutral-500 uppercase text-xs tracking-wider mr-1">Overview:</span>
-        <span className="text-neutral-300">{experience.summary}</span>
+      <div className="mb-3">
+        <span className="text-neutral-500 uppercase text-sm tracking-wider mr-1.5">Overview:</span>
+        <span className="text-neutral-300 text-base">{experience.summary}</span>
       </div>
       
       {/* Skills - with label */}
-      <div className="mb-1">
-        <span className="text-neutral-500 uppercase text-xs tracking-wider mb-1 block">Skills:</span>
-        <div className="flex flex-wrap gap-1">
+      <div className="mb-2">
+        <span className="text-neutral-500 uppercase text-sm tracking-wider mb-1.5 block">Skills:</span>
+        <div className="flex flex-wrap gap-1.5">
           {experience.skills.map(skill => (
             <span 
               key={skill} 
-              className="text-xs px-2 py-1 rounded-full font-medium transition duration-300 hover:scale-105 border border-white/5 bg-purple-500/10 text-purple-300 hover:shadow-[0_0_8px_rgba(168,85,247,0.3)]"
+              className="text-sm px-2.5 py-1.5 rounded-full font-medium transition duration-300 hover:scale-105 border border-white/5 bg-purple-500/10 text-purple-300 hover:shadow-[0_0_8px_rgba(168,85,247,0.3)]"
             >
               {skill}
             </span>
@@ -117,7 +117,7 @@ const CardContent = ({
       {!isExpanded && (
         <button 
           onClick={() => toggleExpand(experience.id)}
-          className="text-cyan-300 text-base font-bold mt-2 inline-flex items-center self-center"
+          className="text-cyan-300 text-lg font-bold mt-3 inline-flex items-center self-center"
         >
           Read More
         </button>
@@ -128,18 +128,18 @@ const CardContent = ({
         {isExpanded && (
           <motion.div
             initial={{ opacity: 0, height: 0, marginTop: 0 }}
-            animate={{ opacity: 1, height: "auto", marginTop: 8 }}
+            animate={{ opacity: 1, height: "auto", marginTop: 10 }}
             exit={{ opacity: 0, height: 0, marginTop: 0 }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
             className="overflow-hidden"
           >
             {/* Achievements with label */}
-            <div className="mb-3">
-              <span className="text-neutral-500 uppercase text-xs tracking-wider mb-1 block">Achievements:</span>
-              <div className="space-y-1">
+            <div className="mb-4">
+              <span className="text-neutral-500 uppercase text-sm tracking-wider mb-1.5 block">Achievements:</span>
+              <div className="space-y-2">
                 {experience.bullets.map((bullet, i) => (
-                  <li key={i} className="text-neutral-200 pl-4 relative list-none">
-                    <span className="absolute left-0">▸</span>
+                  <li key={i} className="text-neutral-200 pl-5 relative list-none text-base">
+                    <span className="absolute left-0 text-lg">▸</span>
                     {bullet}
                   </li>
                 ))}
@@ -147,10 +147,10 @@ const CardContent = ({
             </div>
             
             {/* Fun Fact with more distinct styling */}
-            <div className="text-neutral-400 italic text-sm pt-2 flex items-start gap-1 bg-purple-500/5 p-2 rounded">
-              <span className="text-yellow-400 text-base mt-0.5">💡</span> 
+            <div className="text-neutral-400 italic text-base pt-3 flex items-start gap-2 bg-purple-500/5 p-3 rounded">
+              <span className="text-yellow-400 text-xl mt-0.5">💡</span>
               <div>
-                <span className="text-neutral-500 uppercase text-xs tracking-wider block">Fun Fact:</span>
+                <span className="text-neutral-500 uppercase text-sm tracking-wider block">Fun Fact:</span>
                 {experience.funFact}
               </div>
             </div>
@@ -158,9 +158,9 @@ const CardContent = ({
             {/* Show Less button */}
             <button 
               onClick={() => toggleExpand(experience.id)}
-              className="text-cyan-300 text-base font-bold flex items-center gap-1 mt-2 justify-center"
+              className="text-cyan-300 text-lg font-bold flex items-center gap-1.5 mt-3 justify-center"
             >
-              Show Less <ChevronUp size={16} />
+              Show Less <ChevronUp size={20} />
             </button>
           </motion.div>
         )}
@@ -204,7 +204,7 @@ const ExperienceCard = ({
         <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/10 to-purple-600/10 rounded-2xl border-2 border-cyan-400/60 animate-[pulse_2.5s_cubic-bezier(0.4,0,0.6,1)_infinite]" />
         
         {/* Stable content layer */}
-        <div className="bg-black/50 backdrop-blur-md border border-white/20 rounded-2xl px-4 py-3 shadow-[0_0_10px_rgba(0,255,255,0.05)] flex flex-col h-auto relative z-10 overflow-hidden">
+        <div className="bg-black/50 backdrop-blur-md border border-white/20 rounded-2xl px-5 py-4 shadow-[0_0_10px_rgba(0,255,255,0.05)] flex flex-col h-auto relative z-10 overflow-hidden">
           {/* Card content */}
           <CardContent 
             experience={experience} 
@@ -222,7 +222,7 @@ const ExperienceCard = ({
       {/* Subtle hover glow effect */}
       <div className="absolute -inset-0.5 bg-gradient-to-r from-cyan-500/0 to-purple-500/0 rounded-2xl blur-sm opacity-0 group-hover:opacity-40 group-hover:from-cyan-500/20 group-hover:to-purple-500/20 transition-all duration-500" />
       
-      <div className="bg-black/50 backdrop-blur-md border border-white/20 rounded-2xl px-4 py-3 shadow-[0_0_10px_rgba(0,0,0,0.1)] flex flex-col h-auto overflow-hidden relative">
+      <div className="bg-black/50 backdrop-blur-md border border-white/20 rounded-2xl px-5 py-4 shadow-[0_0_10px_rgba(0,0,0,0.1)] flex flex-col h-auto overflow-hidden relative">
         {/* Card content */}
         <CardContent 
           experience={experience} 
@@ -239,13 +239,13 @@ const Experience = () => {
   const [expandedId, setExpandedId] = useState<number | null>(null);
 
   return (
-    <section id="experience" className="px-4 md:px-6 py-16 md:py-20 min-h-screen flex items-center">
+    <section id="experience" className="px-5 md:px-8 py-20 md:py-24 min-h-screen flex items-center">
       <div className="max-w-5xl mx-auto w-full">
-        <h2 className="text-2xl md:text-3xl font-semibold text-white mb-8 md:mb-12 text-center">
+        <h2 className="section-heading">
           Experience
         </h2>
         
-        <div className="flex flex-col gap-8">
+        <div className="flex flex-col gap-10">
           {experiences.map((exp, index) => (
             <motion.div 
               key={exp.id} 
@@ -256,7 +256,7 @@ const Experience = () => {
               transition={{ duration: 0.5, delay: index * 0.1 }}
             >
               {exp.isPresent && (
-                <div className="absolute -left-4 top-3 w-3 h-3 rounded-full bg-cyan-400 animate-ping" />
+                <div className="absolute -left-4 top-3 w-4 h-4 rounded-full bg-cyan-400 animate-ping" />
               )}
               <ExperienceCard 
                 experience={exp} 

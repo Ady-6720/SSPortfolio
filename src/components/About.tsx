@@ -13,21 +13,21 @@ interface InfoCard {
 
 const infoCards: InfoCard[] = [
   {
-    icon: <MapPin size={14} className="w-3.5 h-3.5 md:w-5 md:h-5" />,
+    icon: <MapPin size={18} className="w-4 h-4 md:w-6 md:h-6" />,
     title: 'Location',
     description: 'Boston, MA',
     iconBg: 'bg-blue-100/10 hover:bg-blue-100/20',
     borderColor: 'border-blue-500/10'
   },
   {
-    icon: <Briefcase size={14} className="w-3.5 h-3.5 md:w-5 md:h-5" />,
+    icon: <Briefcase size={18} className="w-4 h-4 md:w-6 md:h-6" />,
     title: 'Experience',
     description: '1.5+ years as Software Engineer',
     iconBg: 'bg-green-100/10 hover:bg-green-100/20',
     borderColor: 'border-green-500/10'
   },
   {
-    icon: <Code size={14} className="w-3.5 h-3.5 md:w-5 md:h-5" />,
+    icon: <Code size={18} className="w-4 h-4 md:w-6 md:h-6" />,
     title: 'Specialization',
     description: 'Full-Stack Web Development',
     iconBg: 'bg-purple-100/10 hover:bg-purple-100/20',
@@ -78,12 +78,12 @@ const About: React.FC = () => {
       <div className="about-content">
         <div className="about-grid">
           <div className="about-left">
-            <h2 ref={titleRef} className="section-title text-2xl md:text-4xl font-bold text-white mb-6 md:mb-12">About Me</h2>
+            <h2 ref={titleRef} className="section-heading">About Me</h2>
             <div ref={textRef} className="about-text">
-              <p className="text-sm md:text-lg text-white/90 mb-4 leading-relaxed">
+              <p className="text-base md:text-xl text-white/90 mb-5 leading-relaxed">
                 I'm Sejal Satav, a full-stack developer and MIS student at Northeastern University, currently working as a Software Engineer Intern in Boston. I bring over 1.5 years of experience building scalable backend systems and accessible frontends.
               </p>
-              <p className="text-sm md:text-lg text-white/90 leading-relaxed">
+              <p className="text-base md:text-xl text-white/90 leading-relaxed">
                 I have strong knowledge of database systems, distributed systems, algorithms and data structures, and system design. My work spans enterprise automation, educational tools, and career data platforms blending logic with user-focused design.
               </p>
             </div>
@@ -91,39 +91,16 @@ const About: React.FC = () => {
 
           <div ref={cardsRef} className="about-cards">
             {/* Mobile-optimized cards with grid layout */}
-            <div className="md:hidden grid grid-cols-1 gap-1.5">
+            <div className="md:hidden grid grid-cols-1 gap-2.5">
               {infoCards.map((card, index) => (
                 <div 
                   key={card.title}
-                  className={`info-card bg-black/20 backdrop-blur-sm border ${card.borderColor} rounded-lg p-2
+                  className={`info-card bg-black/20 backdrop-blur-sm border-2 ${card.borderColor} rounded-lg p-3
                     transition-all duration-300`}
                   style={{ animationDelay: `${index * 0.1}s` }}
                 >
-                  <div className="flex items-center gap-2">
-                    <div className={`card-icon rounded-md p-1.5 ${card.iconBg} transition-all duration-300`}>
-                      {card.icon}
-                    </div>
-                    <div className="card-content">
-                      <h3 className="card-title text-xs font-semibold text-white">{card.title}</h3>
-                      <p className="card-description text-[10px] text-neutral-300">{card.description}</p>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            {/* Original cards for desktop */}
-            <div className="hidden md:flex md:flex-col md:space-y-3">
-              {infoCards.map((card, index) => (
-                <div 
-                  key={card.title}
-                  className={`info-card bg-black/30 backdrop-blur-sm border ${card.borderColor} rounded-2xl p-3 md:p-4 
-                    shadow-[inset_0_0_4px_rgba(255,255,255,0.05)] 
-                    transition-all duration-300 hover:scale-[1.02]`}
-                  style={{ animationDelay: `${index * 0.1}s` }}
-                >
                   <div className="flex items-center gap-3">
-                    <div className={`card-icon rounded-lg p-2 ${card.iconBg} transition-all duration-300 hover:shadow-[0_0_8px]`}>
+                    <div className={`card-icon rounded-md p-2 ${card.iconBg} transition-all duration-300`}>
                       {card.icon}
                     </div>
                     <div className="card-content">
@@ -134,11 +111,34 @@ const About: React.FC = () => {
                 </div>
               ))}
             </div>
+
+            {/* Original cards for desktop */}
+            <div className="hidden md:flex md:flex-col md:space-y-4">
+              {infoCards.map((card, index) => (
+                <div 
+                  key={card.title}
+                  className={`info-card bg-black/30 backdrop-blur-sm border-2 ${card.borderColor} rounded-2xl p-4 md:p-5
+                    shadow-[inset_0_0_4px_rgba(255,255,255,0.05)] 
+                    transition-all duration-300 hover:scale-[1.02]`}
+                  style={{ animationDelay: `${index * 0.1}s` }}
+                >
+                  <div className="flex items-center gap-4">
+                    <div className={`card-icon rounded-lg p-3 ${card.iconBg} transition-all duration-300 hover:shadow-[0_0_8px]`}>
+                      {card.icon}
+                    </div>
+                    <div className="card-content">
+                      <h3 className="card-title text-base font-semibold text-white">{card.title}</h3>
+                      <p className="card-description text-sm text-neutral-300">{card.description}</p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
 
         {/* What I'm Good At Bento Grid - For all views */}
-        <div ref={skillsRef} className="skills-grid mt-4 mb-2">
+        <div ref={skillsRef} className="skills-grid mt-6 mb-3">
           <SkillsBentoGrid />
         </div>
       </div>

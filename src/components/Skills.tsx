@@ -43,7 +43,7 @@ const RevealWrapper = ({ children, index, delay = 0 }: {
 
 const skillItems: SkillItem[] = [
   {
-    icon: <Code size={22} />,
+    icon: <Code size={28} />,
     title: "Programming Languages",
     pills: [
       { name: "Java" },
@@ -60,7 +60,7 @@ const skillItems: SkillItem[] = [
     rgbValues: "59, 130, 246"
   },
   {
-    icon: <Database size={22} />,
+    icon: <Database size={28} />,
     title: "Backend Development",
     pills: [
       { name: "Node.js" },
@@ -77,7 +77,7 @@ const skillItems: SkillItem[] = [
     rgbValues: "34, 197, 94"
   },
   {
-    icon: <Database size={22} />,
+    icon: <Database size={28} />,
     title: "Databases",
     pills: [
       { name: "PostgreSQL" },
@@ -93,7 +93,7 @@ const skillItems: SkillItem[] = [
     rgbValues: "99, 102, 241"
   },
   {
-    icon: <Terminal size={22} />,
+    icon: <Terminal size={28} />,
     title: "Cloud & DevOps",
     pills: [
       { name: "AWS EC2" },
@@ -110,7 +110,7 @@ const skillItems: SkillItem[] = [
     rgbValues: "251, 191, 36"
   },
   {
-    icon: <Layers size={22} />,
+    icon: <Layers size={28} />,
     title: "Microservices",
     pills: [
       { name: "gRPC" },
@@ -125,7 +125,7 @@ const skillItems: SkillItem[] = [
     rgbValues: "244, 114, 182"
   },
   {
-    icon: <Layout size={22} />,
+    icon: <Layout size={28} />,
     title: "UI/UX",
     pills: [
       { name: "Figma" },
@@ -383,7 +383,7 @@ const Skills: React.FC = () => {
       
       <div className="max-w-7xl w-full mx-auto relative z-10">
         <motion.h2 
-          className="text-2xl md:text-4xl font-semibold text-white mb-6 md:mb-10 text-center"
+          className="section-heading"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
