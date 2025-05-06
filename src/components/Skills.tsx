@@ -198,8 +198,8 @@ const SkillPills = ({ pills, colorClass, rgbValues, isDesktop }: {
                 scale: 0.95,
                 boxShadow: `0 0 8px rgba(${rgbValues}, 0.6)`,
               }}
-              className={`${colorClass} inline-block text-sm px-3 py-1.5 
-                rounded-full font-medium border border-white/20 bg-black/30
+              className={`${colorClass} inline-block text-base px-3 py-1.5 
+                rounded-full font-medium border-2 border-white/30 bg-black/30
                 transition-all duration-300 whitespace-nowrap`}
               style={{
                 textShadow: `0 0 3px rgba(${rgbValues}, 0.3)`
@@ -264,13 +264,13 @@ const MobileAccordionCard = ({
   return (
     <RevealWrapper index={index}>
       <div 
-        className={`mb-3.5 rounded-xl overflow-hidden border 
-          ${isOpen ? `border-${skill.colorClass.split('-')[1]}-400/40` : 'border-white/10'} 
+        className={`mb-3.5 rounded-xl overflow-hidden border-2 
+          ${isOpen ? `border-${skill.colorClass.split('-')[1]}-400/40` : 'border-white/20'} 
           ${skill.shadowColor} ${isOpen ? skill.hoverShadow.replace('hover:', '') : ''} 
           transition-all duration-300 bg-black/20 backdrop-blur-sm`}
       >
         <motion.button
-          className="w-full flex items-center justify-between p-3 text-left"
+          className="w-full flex items-center justify-between p-3.5 text-left"
           onClick={toggleOpen}
           whileTap={{ scale: 0.98 }}
         >
@@ -278,17 +278,17 @@ const MobileAccordionCard = ({
             <span className={`${skill.colorClass} mr-2.5`}>
               {skill.icon}
             </span>
-            <h3 className={`${skill.colorClass} text-base font-semibold`}>
+            <h3 className={`${skill.colorClass} text-lg font-semibold`}>
               {skill.title}
             </h3>
           </div>
           <motion.span 
-            className={`${skill.colorClass} h-5 w-5 flex items-center justify-center rounded-full 
+            className={`${skill.colorClass} h-6 w-6 flex items-center justify-center rounded-full 
               ${isOpen ? `bg-${skill.colorClass.split('-')[1]}-500/20` : ''}`}
             animate={{ rotate: isOpen ? 45 : 0 }}
             transition={{ duration: 0.2 }}
           >
-            {isOpen ? <X size={14} /> : <Plus size={14} />}
+            {isOpen ? <X size={16} /> : <Plus size={16} />}
           </motion.span>
         </motion.button>
         
@@ -312,9 +312,9 @@ const MobileAccordionCard = ({
                   opacity: { duration: 0.1 }
                 }
               }}
-              className="overflow-hidden border-t border-white/10"
+              className="overflow-hidden border-t-2 border-white/20"
             >
-              <div className="p-3 pt-2">
+              <div className="p-4 pt-3">
                 <SkillPills
                   pills={skill.pills}
                   colorClass={skill.colorClass}
