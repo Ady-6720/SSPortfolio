@@ -29,10 +29,8 @@ body {
 
 section {
   width: 100%;
-  min-height: 100vh;
-  height: 100vh;
+  height: 100%;
   padding: 2rem;
-  scroll-margin-top: 60px;
 }
 
 /* Container wrappers */
@@ -42,11 +40,12 @@ section {
 #experience-container,
 #skills-container,
 #projects-container {
+  overflow: hidden; /* Prevent content overflow */
   position: relative;
-  scroll-margin-top: 60px;
+  scroll-margin-top: 70px; /* Space for fixed navbar */
 }
 
-/* Smooth scrolling enhancement */
+/* Smooth scrolling */
 .main-content {
   scroll-behavior: smooth;
   scrollbar-width: thin;
@@ -126,35 +125,4 @@ section {
 
 .read-the-docs {
   color: #888;
-}
-
-/* Global section headings - center all */
-section h2 {
-  text-align: center;
-  margin-bottom: 1.5rem;
-  color: var(--accent-color);
-}
-
-/* Global card styling - make borders more visible */
-[class*="card"],
-[class*="border"]:not([class*="rounded-lg"][class*="text-"]):not([class*="rounded-full"][class*="text-"]),
-div[class*="backdrop-blur"] {
-  border-color: rgba(255, 255, 255, 0.25) !important;
-}
-
-[class*="card"]:hover,
-[class*="border"]:hover:not([class*="rounded-lg"][class*="text-"]):not([class*="rounded-full"][class*="text-"]),
-div[class*="backdrop-blur"]:hover {
-  border-color: rgba(255, 255, 255, 0.4) !important;
-}
-
-/* More specific card styling targets */
-#experience div[class*="rounded-2xl"],
-#skills div[class*="rounded-xl"],
-#projects div[class*="rounded-xl"],
-#projects div[class*="rounded-2xl"],
-#about div[class*="rounded-lg"],
-#about div[class*="rounded-2xl"] {
-  border-width: 1px !important;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2) !important;
 }

@@ -284,7 +284,7 @@ const TechPill = ({ tech, color }: { tech: string; color: string }) => {
         transition: { type: "spring", stiffness: 400, damping: 10 }
       }}
     >
-      {tech}
+                      {tech}
     </motion.span>
   );
 };
@@ -347,8 +347,8 @@ const ProjectCard = ({ project, index, isExpanded, onToggle }: {
                   <ExternalLink className="w-4 h-4" />
                 </motion.a>
               )}
-            </div>
-          </div>
+                </div>
+              </div>
 
           {project.period && (
             <div className="text-xs text-white/60 mb-2">

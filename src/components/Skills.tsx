@@ -180,41 +180,40 @@ const SkillPills = ({ pills, colorClass, rgbValues, isDesktop }: {
   rgbValues: string;
   isDesktop: boolean;
 }) => {
-  // Extract color name from colorClass (e.g., "text-blue-400" -> "blue")
-  const colorName = colorClass.split('-')[1];
-  
-  // For mobile, show grid layout instead of horizontal scroll
+  // For mobile, show horizontal scrollable container
   if (!isDesktop) {
     return (
-      <div className="grid grid-cols-2 gap-1.5 h-full overflow-y-auto">
-        {pills.map((pill, i) => (
-          <motion.span 
-            key={i}
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ 
-              delay: 0.05 + i * 0.05,
-              duration: 0.3
-            }}
-            whileTap={{ 
-              scale: 0.95,
-              boxShadow: `0 0 8px rgba(${rgbValues}, 0.6)`,
-            }}
-            className={`${colorClass} text-xs px-2 py-1 
-              rounded-lg font-medium border border-${colorName}-400 bg-black/30
-              transition-all duration-300 text-center flex items-center justify-center`}
-            style={{
-              textShadow: `0 0 3px rgba(${rgbValues}, 0.3)`
-            }}
-          >
-            {pill.name}
-          </motion.span>
-        ))}
+      <div className="overflow-x-auto pb-2 mt-2">
+        <div className="flex gap-2" style={{ minWidth: 'max-content' }}>
+          {pills.map((pill, i) => (
+            <motion.span 
+              key={i}
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ 
+                delay: 0.05 + i * 0.05,
+                duration: 0.3
+              }}
+              whileTap={{ 
+                scale: 0.95,
+                boxShadow: `0 0 8px rgba(${rgbValues}, 0.6)`,
+              }}
+              className={`${colorClass} inline-block text-xs px-3 py-1.5 
+                rounded-full font-medium border border-white/20 bg-black/30
+                transition-all duration-300 whitespace-nowrap`}
+              style={{
+                textShadow: `0 0 3px rgba(${rgbValues}, 0.3)`
+              }}
+            >
+              {pill.name}
+            </motion.span>
+          ))}
+        </div>
       </div>
     );
   }
   
-  // For desktop, keep the flex wrap layout
+  // For desktop, show grid layout
   return (
     <div className="flex flex-wrap gap-2 mt-3">
       {pills.map((pill, i) => (
@@ -236,8 +235,8 @@ const SkillPills = ({ pills, colorClass, rgbValues, isDesktop }: {
               damping: 10 
             }
           }}
-          className={`${colorClass} inline-block text-base px-3 py-1.5 
-            rounded-full font-medium border border-${colorName}-400 bg-black/20
+          className={`${colorClass} inline-block text-sm px-3 py-1.5 
+            rounded-full font-medium border border-white/20 bg-black/20
             hover:bg-black/40 hover:text-white transition-all duration-300`}
           style={{
             textShadow: `0 0 3px rgba(${rgbValues}, 0.3)`
@@ -265,27 +264,27 @@ const MobileAccordionCard = ({
   return (
     <RevealWrapper index={index}>
       <div 
-        className={`h-full mb-1 rounded-xl overflow-hidden border 
-          ${isOpen ? `border-${skill.colorClass.split('-')[1]}-400/40` : 'border-white/20'} 
+        className={`mb-3.5 rounded-xl overflow-hidden border 
+          ${isOpen ? `border-${skill.colorClass.split('-')[1]}-400/40` : 'border-white/10'} 
           ${skill.shadowColor} ${isOpen ? skill.hoverShadow.replace('hover:', '') : ''} 
-          transition-all duration-300 bg-black/20 backdrop-blur-sm flex flex-col`}
+          transition-all duration-300 bg-black/20 backdrop-blur-sm`}
       >
         <motion.button
-          className="w-full flex items-center justify-between p-2 text-left"
+          className="w-full flex items-center justify-between p-3 text-left"
           onClick={toggleOpen}
           whileTap={{ scale: 0.98 }}
         >
           <div className="flex items-center">
-            <span className={`${skill.colorClass} mr-2`}>
+            <span className={`${skill.colorClass} mr-2.5`}>
               {skill.icon}
             </span>
-            <h3 className={`${skill.colorClass} text-base font-semibold truncate`}>
+            <h3 className={`${skill.colorClass} text-sm font-semibold`}>
               {skill.title}
             </h3>
           </div>
           <motion.span 
             className={`${skill.colorClass} h-5 w-5 flex items-center justify-center rounded-full 
-              ${isOpen ? `bg-${skill.colorClass.split('-')[1]}-500/20` : ''} ml-1 flex-shrink-0`}
+              ${isOpen ? `bg-${skill.colorClass.split('-')[1]}-500/20` : ''}`}
             animate={{ rotate: isOpen ? 45 : 0 }}
             transition={{ duration: 0.2 }}
           >
@@ -313,9 +312,9 @@ const MobileAccordionCard = ({
                   opacity: { duration: 0.1 }
                 }
               }}
-              className="overflow-hidden border-t border-white/20 flex-grow"
+              className="overflow-hidden border-t border-white/10"
             >
-              <div className="p-2 flex flex-col h-full">
+              <div className="p-3 pt-2">
                 <SkillPills
                   pills={skill.pills}
                   colorClass={skill.colorClass}
@@ -351,7 +350,7 @@ const DesktopCard = ({ skill, index }: { skill: SkillItem; index: number }) => {
         <div className={`${skill.colorClass} p-2 rounded-md mb-3 group-hover:text-white transition-colors duration-300`}>
           {skill.icon}
         </div>
-        <h3 className={`${skill.colorClass} text-xl font-semibold mb-2 group-hover:text-white transition-colors duration-300`}>
+        <h3 className={`${skill.colorClass} text-lg font-semibold mb-2 group-hover:text-white transition-colors duration-300`}>
           {skill.title}
         </h3>
         <SkillPills
@@ -384,7 +383,7 @@ const Skills: React.FC = () => {
       
       <div className="max-w-7xl w-full mx-auto relative z-10">
         <motion.h2 
-          className="text-2xl md:text-4xl font-semibold text-white mb-6 md:mb-10 text-center"
+          className="text-xl md:text-3xl font-semibold text-white mb-6 md:mb-10 text-center"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
@@ -392,8 +391,8 @@ const Skills: React.FC = () => {
           What I'm Good At
         </motion.h2>
         
-        {/* Mobile view - Grid layout with two columns */}
-        <div className="md:hidden grid grid-cols-2 gap-2">
+        {/* Mobile view - Accordion layout */}
+        <div className="md:hidden space-y-2">
           {skillItems.map((skill, index) => (
             <MobileAccordionCard 
               key={index} 
