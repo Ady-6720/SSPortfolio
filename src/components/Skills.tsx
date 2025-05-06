@@ -198,7 +198,7 @@ const SkillPills = ({ pills, colorClass, rgbValues, isDesktop }: {
                 scale: 0.95,
                 boxShadow: `0 0 8px rgba(${rgbValues}, 0.6)`,
               }}
-              className={`${colorClass} inline-block text-xs px-3 py-1.5 
+              className={`${colorClass} inline-block text-sm px-3 py-1.5 
                 rounded-full font-medium border border-white/20 bg-black/30
                 transition-all duration-300 whitespace-nowrap`}
               style={{
@@ -235,7 +235,7 @@ const SkillPills = ({ pills, colorClass, rgbValues, isDesktop }: {
               damping: 10 
             }
           }}
-          className={`${colorClass} inline-block text-sm px-3 py-1.5 
+          className={`${colorClass} inline-block text-base px-3 py-1.5 
             rounded-full font-medium border border-white/20 bg-black/20
             hover:bg-black/40 hover:text-white transition-all duration-300`}
           style={{
@@ -278,7 +278,7 @@ const MobileAccordionCard = ({
             <span className={`${skill.colorClass} mr-2.5`}>
               {skill.icon}
             </span>
-            <h3 className={`${skill.colorClass} text-sm font-semibold`}>
+            <h3 className={`${skill.colorClass} text-base font-semibold`}>
               {skill.title}
             </h3>
           </div>
@@ -350,7 +350,7 @@ const DesktopCard = ({ skill, index }: { skill: SkillItem; index: number }) => {
         <div className={`${skill.colorClass} p-2 rounded-md mb-3 group-hover:text-white transition-colors duration-300`}>
           {skill.icon}
         </div>
-        <h3 className={`${skill.colorClass} text-lg font-semibold mb-2 group-hover:text-white transition-colors duration-300`}>
+        <h3 className={`${skill.colorClass} text-xl font-semibold mb-2 group-hover:text-white transition-colors duration-300`}>
           {skill.title}
         </h3>
         <SkillPills
@@ -383,7 +383,7 @@ const Skills: React.FC = () => {
       
       <div className="max-w-7xl w-full mx-auto relative z-10">
         <motion.h2 
-          className="text-xl md:text-3xl font-semibold text-white mb-6 md:mb-10 text-center"
+          className="text-2xl md:text-4xl font-semibold text-white mb-6 md:mb-10 text-center"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
