@@ -49,6 +49,8 @@ const ParallaxBackground: React.FC = () => {
     <div ref={containerRef} className="parallax-container">
       <div ref={dotsRef} className="parallax-dots">
         <div className="dots-bg" />
+        <div className="dots-bg-back" />
+        <div className="dots-bg-front" />
       </div>
     </div>
   );
