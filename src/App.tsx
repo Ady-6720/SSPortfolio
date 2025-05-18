@@ -8,6 +8,8 @@ import Projects from './components/Projects';
 import Footer from './components/Footer';
 import ParallaxBackground from './components/ParallaxBackground';
 import Education from './components/Education';
+import Contact from './components/Contact';
+import BackToTop from './components/BackToTop';
 
 function App() {
   return (
@@ -21,8 +23,10 @@ function App() {
         <div id="experience-container" className="h-screen"><Experience /></div>
         <div id="skills-container" className="h-screen"><Skills /></div>
         <div id="projects-container" className="h-screen"><Projects /></div>
+        <div id="contact-container" className="h-screen"><Contact /></div>
       </main>
       <Footer />
+      <BackToTop />
     </>
   );
 }

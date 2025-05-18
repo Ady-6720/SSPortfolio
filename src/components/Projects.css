@@ -29,7 +29,8 @@
 
 .project-card {
   background-color: rgba(30, 30, 30, 0.4);
-  border: 1px solid var(--dark-border);
+  border-width: 1px !important;
+  border-color: rgba(255,255,255,0.2) !important;
   border-radius: 8px;
   overflow: hidden;
   transition: transform 0.3s ease, box-shadow 0.3s ease;

@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronUp } from 'lucide-react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 interface ExperienceItem {
   role: string;
@@ -172,28 +172,35 @@ const CardContent = ({
 const ExperienceCard = ({ 
   experience, 
   expandedId, 
-  setExpandedId 
+  setExpandedId, 
+  isDesktop
 }: { 
   experience: ExperienceItem;
   expandedId: number | null;
   setExpandedId: React.Dispatch<React.SetStateAction<number | null>>;
+  isDesktop: boolean;
 }) => {
-  // Check if this card is expanded
   const isExpanded = expandedId === experience.id;
-  
-  // Toggle expand/collapse function
+
   const toggleExpand = (id: number) => {
     if (expandedId === id) {
-      setExpandedId(null); // Collapse this card
+      setExpandedId(null);
     } else {
-      setExpandedId(id); // Expand this card (and collapse others)
+      setExpandedId(id);
     }
   };
 
-  // Create wrapper div with animation if this is the current job
+  // For desktop: expand on hover, collapse on mouse leave
+  const hoverProps = isDesktop
+    ? {
+        onMouseEnter: () => setExpandedId(experience.id),
+        onMouseLeave: () => setExpandedId(null)
+      }
+    : {};
+
   if (experience.isPresent) {
     return (
-      <div className="relative">
+      <div className="relative" {...hoverProps}>
         {/* Outer-most glow effect */}
         <div className="absolute -inset-0.5 bg-gradient-to-r from-cyan-500/30 to-purple-500/30 rounded-2xl blur-md opacity-70 group-hover:opacity-100 transition duration-1000 animate-[pulse_5s_ease-in-out_infinite]" />
         
@@ -205,7 +212,6 @@ const ExperienceCard = ({
         
         {/* Stable content layer */}
         <div className="bg-black/50 backdrop-blur-md border border-white/20 rounded-2xl px-4 py-3 shadow-[0_0_10px_rgba(0,255,255,0.05)] flex flex-col h-auto relative z-10 overflow-hidden">
-          {/* Card content */}
           <CardContent 
             experience={experience} 
             isExpanded={isExpanded} 
@@ -216,14 +222,12 @@ const ExperienceCard = ({
     );
   }
 
-  // Regular non-pulsating card
   return (
-    <div className="relative group transition-all duration-300 hover:-translate-y-1">
+    <div className="relative group transition-all duration-300 hover:-translate-y-1" {...hoverProps}>
       {/* Subtle hover glow effect */}
       <div className="absolute -inset-0.5 bg-gradient-to-r from-cyan-500/0 to-purple-500/0 rounded-2xl blur-sm opacity-0 group-hover:opacity-40 group-hover:from-cyan-500/20 group-hover:to-purple-500/20 transition-all duration-500" />
       
       <div className="bg-black/50 backdrop-blur-md border border-white/20 rounded-2xl px-4 py-3 shadow-[0_0_10px_rgba(0,0,0,0.1)] flex flex-col h-auto overflow-hidden relative">
-        {/* Card content */}
         <CardContent 
           experience={experience} 
           isExpanded={isExpanded} 
@@ -235,8 +239,15 @@ const ExperienceCard = ({
 };
 
 const Experience = () => {
-  // Track which card is expanded (only one at a time)
   const [expandedId, setExpandedId] = useState<number | null>(null);
+  const [isDesktop, setIsDesktop] = useState(false);
+
+  useEffect(() => {
+    const checkDesktop = () => setIsDesktop(window.innerWidth >= 768);
+    checkDesktop();
+    window.addEventListener('resize', checkDesktop);
+    return () => window.removeEventListener('resize', checkDesktop);
+  }, []);
 
   return (
     <section id="experience" className="px-4 md:px-6 py-16 md:py-20 min-h-screen flex items-center">
@@ -244,7 +255,6 @@ const Experience = () => {
         <h2 className="text-2xl md:text-3xl font-semibold text-white mb-8 md:mb-12 text-center">
           Experience
         </h2>
-        
         <div className="flex flex-col gap-8">
           {experiences.map((exp, index) => (
             <motion.div 
@@ -262,6 +272,7 @@ const Experience = () => {
                 experience={exp} 
                 expandedId={expandedId}
                 setExpandedId={setExpandedId}
+                isDesktop={isDesktop}
               />
             </motion.div>
           ))}

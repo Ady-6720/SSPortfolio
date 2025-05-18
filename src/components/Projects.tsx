@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { Github, ExternalLink, ChevronDown, ChevronUp } from 'lucide-react';
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 
 interface Project {
   title: string;
@@ -289,12 +289,21 @@ const TechPill = ({ tech, color }: { tech: string; color: string }) => {
   );
 };
 
-const ProjectCard = ({ project, index, isExpanded, onToggle }: { 
+const ProjectCard = ({ project, index, isExpanded, onToggle, isDesktop }: { 
   project: Project; 
   index: number;
   isExpanded: boolean;
   onToggle: () => void;
+  isDesktop: boolean;
 }) => {
+  // For desktop: expand on hover, collapse on mouse leave
+  const hoverProps = isDesktop
+    ? {
+        onMouseEnter: onToggle,
+        onMouseLeave: () => onToggle()
+      }
+    : {};
+
   return (
     <RevealWrapper index={index}>
       <motion.div
@@ -303,13 +312,14 @@ const ProjectCard = ({ project, index, isExpanded, onToggle }: {
           hover:shadow-[0_10px_20px_rgba(0,0,0,0.3),0_0_15px_rgba(255,255,255,0.1)] 
           ${isExpanded ? 'lg:col-span-2' : ''}`}
         whileHover={{ 
-          y: -8, 
+          y: -4, // less distance
           transition: { 
             type: "spring", 
             stiffness: 200, 
-            damping: 15 
+            damping: 20 
           }
         }}
+        {...hoverProps}
       >
         <div className="p-4 md:p-5">
           <div className="flex justify-between items-start mb-3">
@@ -381,8 +391,7 @@ const ProjectCard = ({ project, index, isExpanded, onToggle }: {
 
           <motion.button
             onClick={onToggle}
-            className="flex items-center gap-1 text-xs font-medium text-blue-400
-              mt-4 px-2.5 py-1 rounded-full"
+            className="flex items-center gap-1 text-xs font-medium text-blue-400 mt-4 px-2.5 py-1 rounded-full"
             whileHover={{ 
               scale: 1.05, 
               backgroundColor: "rgba(59, 130, 246, 0.2)",
@@ -408,23 +417,9 @@ const ProjectCard = ({ project, index, isExpanded, onToggle }: {
           <AnimatePresence>
             {isExpanded && (
               <motion.div
-                initial={{ height: 0, opacity: 0 }}
-                animate={{ 
-                  height: "auto", 
-                  opacity: 1,
-                  transition: {
-                    height: { duration: 0.4, ease: [0.04, 0.62, 0.23, 0.98] },
-                    opacity: { duration: 0.3, delay: 0.1 }
-                  }
-                }}
-                exit={{ 
-                  height: 0, 
-                  opacity: 0,
-                  transition: {
-                    height: { duration: 0.3 },
-                    opacity: { duration: 0.2 }
-                  }
-                }}
+                initial={{ height: 0, opacity: 0, y: 8 }}
+                animate={{ height: "auto", opacity: 1, y: 0, transition: { height: { duration: 0.25 }, opacity: { duration: 0.18 } } }}
+                exit={{ height: 0, opacity: 0, y: 8, transition: { height: { duration: 0.18 }, opacity: { duration: 0.12 } } }}
                 className="overflow-hidden"
               >
                 <div className="mt-4 pt-4 border-t border-white/10 group-hover:border-white/20 transition-colors duration-300">
@@ -445,6 +440,14 @@ const Projects = () => {
   const [activeFilters, setActiveFilters] = useState<string[]>(['ALL']);
   const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
+  const [isDesktop, setIsDesktop] = useState(false);
+
+  useEffect(() => {
+    const checkDesktop = () => setIsDesktop(window.innerWidth >= 768);
+    checkDesktop();
+    window.addEventListener('resize', checkDesktop);
+    return () => window.removeEventListener('resize', checkDesktop);
+  }, []);
 
   const handleToggle = (index: number) => {
     setExpandedIndex(expandedIndex === index ? null : index);
@@ -456,7 +459,6 @@ const Projects = () => {
 
   const handleFilterChange = (filter: string) => {
     setExpandedIndex(null);
-    
     setTimeout(() => {
       if (filter === 'ALL') {
         setActiveFilters(['ALL']);
@@ -521,6 +523,7 @@ const Projects = () => {
               index={index}
               isExpanded={expandedIndex === index}
               onToggle={() => handleToggle(index)}
+              isDesktop={isDesktop}
             />
           ))}
         </div>

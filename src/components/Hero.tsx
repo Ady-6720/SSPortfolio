@@ -98,7 +98,7 @@ const Hero: React.FC = () => {
             textShadow: "0 0 8px rgba(0, 255, 255, 0.4)"
           }}
         >
-          Crafting clarity through design
+          Software Developer | Front End | Backend
         </motion.p>
 
         <motion.div 

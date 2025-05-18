@@ -21,7 +21,8 @@
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   background-color: rgba(0, 0, 0, 0.3);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-width: 1px !important;
+  border-color: rgba(255,255,255,0.2) !important;
 }
 
 .education-card.card-visible {

@@ -130,7 +130,7 @@ const SkillsBentoGrid: React.FC = () => {
         {bentoItems.map((item, index) => (
           <div 
             key={index}
-            className={`${item.gridSpan || 'col-span-1'} ${item.bgColor} backdrop-blur-sm border ${item.borderColor} rounded-xl p-3
+            className={`${item.gridSpan || 'col-span-1'} ${item.bgColor} backdrop-blur-sm border border-[1px] border-opacity-20 ${item.borderColor} rounded-xl p-3
               hover:bg-opacity-20 transition-all duration-300 hover:scale-[1.03] hover:shadow-md`}
           >
             <div className="flex items-center gap-2.5">

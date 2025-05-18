@@ -67,6 +67,11 @@
   transform: translateY(0);
 }
 
+.info-card {
+  border-width: 1px !important;
+  border-color: rgba(255,255,255,0.2) !important;
+}
+
 @media (max-width: 1024px) {
   .about-grid {
     grid-template-columns: 1fr;

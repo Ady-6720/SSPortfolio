@@ -1,79 +1,93 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import './Navbar.css';
 
+const sectionMap = [
+  { id: 'about-container', label: 'About' },
+  { id: 'experience-container', label: 'Experience' },
+  { id: 'skills-container', label: 'Skills' },
+  { id: 'projects-container', label: 'Projects' },
+  { id: 'contact-container', label: 'Contact' }
+];
+
 const Navbar: React.FC = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [active, setActive] = useState('About');
+  const observerRef = useRef<IntersectionObserver | null>(null);
 
+  // IntersectionObserver for section highlighting
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
+    const handleIntersect = (entries: IntersectionObserverEntry[]) => {
+      let maxRatio = 0;
+      let currentSection = 'About';
+      entries.forEach(entry => {
+        if (entry.isIntersecting && entry.intersectionRatio > maxRatio) {
+          maxRatio = entry.intersectionRatio;
+          const found = sectionMap.find(s => s.id === entry.target.id);
+          if (found) currentSection = found.label;
+        }
+      });
+      setActive(currentSection);
     };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    const options = {
+      root: null,
+      rootMargin: '0px',
+      threshold: [0.3, 0.5, 0.7, 1.0]
+    };
+    observerRef.current = new window.IntersectionObserver(handleIntersect, options);
+    sectionMap.forEach(section => {
+      const el = document.getElementById(section.id);
+      if (el) observerRef.current?.observe(el);
+    });
+    return () => {
+      observerRef.current?.disconnect();
+    };
   }, []);
 
-  // Enhanced smooth scrolling function for snap scroll
-  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string, label: string) => {
     e.preventDefault();
-    
-    // Get the container ID for the section
-    const sectionId = targetId.substring(1); // Remove # from targetId
-    const containerId = `${sectionId}-container`;
+    setActive(label);
+    const sectionId = targetId.substring(1);
+    const containerId = `${sectionId}`;
     const target = document.getElementById(containerId);
-    
     if (target) {
       target.scrollIntoView({ behavior: 'smooth' });
     }
-    
-    // Close mobile menu if open
     if (isMobileMenuOpen) {
       setIsMobileMenuOpen(false);
     }
   };
 
-  const navLinks = [
-    { href: '#about', label: 'About' },
-    { href: '#education', label: 'Education' },
-    { href: '#experience', label: 'Experience' },
-    { href: '#skills', label: 'Skills' },
-    { href: '#projects', label: 'Projects' }
-  ];
+  const navLinks = sectionMap;
 
   return (
     <motion.nav 
-      className={`navbar ${isScrolled ? 'scrolled' : ''}`}
+      className={`navbar glass-navbar`}
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
     >
       <div className="nav-container">
         <a 
-          href="#" 
-          className="nav-logo text-lg sm:text-xl font-bold"
-          onClick={(e) => handleNavClick(e, '#hero')}
+          href="#about-container" 
+          className="nav-logo-accent"
+          onClick={(e) => handleNavClick(e, '#about-container', 'About')}
         >
-          SS
+          SejalSatav
         </a>
-
-        {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center space-x-6">
+        <div className="hidden md:flex items-center space-x-8">
           {navLinks.map((link) => (
             <a
-              key={link.href}
-              href={link.href}
-              className="nav-link text-sm sm:text-base"
-              onClick={(e) => handleNavClick(e, link.href)}
+              key={link.id}
+              href={`#${link.id}`}
+              className={`nav-link-minimal${active === link.label ? ' nav-link-active' : ''}`}
+              onClick={(e) => handleNavClick(e, `#${link.id}`, link.label)}
             >
               {link.label}
             </a>
           ))}
         </div>
-
-        {/* Mobile Menu Button */}
         <button
           className="md:hidden p-2"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -86,8 +100,6 @@ const Navbar: React.FC = () => {
           )}
         </button>
       </div>
-
-      {/* Mobile Menu */}
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
@@ -99,10 +111,10 @@ const Navbar: React.FC = () => {
           >
             {navLinks.map((link) => (
               <a
-                key={link.href}
-                href={link.href}
-                className="mobile-nav-link text-sm"
-                onClick={(e) => handleNavClick(e, link.href)}
+                key={link.id}
+                href={`#${link.id}`}
+                className={`mobile-nav-link${active === link.label ? ' nav-link-active' : ''}`}
+                onClick={(e) => handleNavClick(e, `#${link.id}`, link.label)}
               >
                 {link.label}
               </a>
