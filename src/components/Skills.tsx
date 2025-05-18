@@ -1,5 +1,5 @@
 import React from 'react';
-import { Code, Database, Terminal, Layout, Cpu, Shield, Layers } from 'lucide-react';
+import { Code, Database, Terminal, Cpu, Layers } from 'lucide-react';
 import './Skills.css';
 
 const skillGroups = [
@@ -65,14 +65,14 @@ const Skills: React.FC = () => {
         {/* Row 1 */}
         <div className="flex flex-col md:flex-row gap-6">
           {/* Languages */}
-          <div className={`flex-1 border border-[1px] border-opacity-20 rounded-xl p-5 ${cardColor.blue} transition-all duration-200 hover:bg-neutral-700/80 hover:scale-[1.015]` }>
+          <div className={`flex-1 border border-[1px] border-opacity-20 rounded-xl p-5 ${cardColor.blue} transition-all duration-200 hover:bg-neutral-700/80 hover:scale-[1.015] bg-black/80` }>
             <div className="flex items-center gap-2 mb-4">
               {skillGroups[0].icon}
               <span className={`font-semibold text-lg ${headingColor.blue}`}>{skillGroups[0].title}</span>
             </div>
             <div className="flex flex-wrap gap-2">
               {skillGroups[0].skills.map(skill => (
-                <span key={skill} className={`bg-neutral-900 text-gray-200 px-3 py-1 rounded-md text-sm font-medium transition-all duration-150 ${pillHover.blue}`}>
+                <span key={skill} className={`bg-black/80 text-gray-200 px-3 py-1 rounded-md text-sm font-medium transition-all duration-150 ${pillHover.blue}`}>
                   {skill}
                 </span>
               ))}
@@ -82,14 +82,14 @@ const Skills: React.FC = () => {
         {/* Row 2 */}
         <div className="flex flex-col md:flex-row gap-6">
           {/* Frameworks & Tools */}
-          <div className={`flex-1 border border-[1px] border-opacity-20 rounded-xl p-5 ${cardColor.green} transition-all duration-200 hover:bg-neutral-700/80 hover:scale-[1.015]`}>
+          <div className={`flex-1 border border-[1px] border-opacity-20 rounded-xl p-5 ${cardColor.green} transition-all duration-200 hover:bg-neutral-700/80 hover:scale-[1.015] bg-black/80`}>
             <div className="flex items-center gap-2 mb-4">
               {skillGroups[1].icon}
               <span className={`font-semibold text-lg ${headingColor.green}`}>{skillGroups[1].title}</span>
             </div>
             <div className="flex flex-wrap gap-2">
               {skillGroups[1].skills.map(skill => (
-                <span key={skill} className={`bg-neutral-900 text-gray-200 px-3 py-1 rounded-md text-sm font-medium transition-all duration-150 ${pillHover.green}`}>
+                <span key={skill} className={`bg-black/80 text-gray-200 px-3 py-1 rounded-md text-sm font-medium transition-all duration-150 ${pillHover.green}`}>
                   {skill}
                 </span>
               ))}
@@ -99,28 +99,28 @@ const Skills: React.FC = () => {
         {/* Row 3 */}
         <div className="flex flex-col md:flex-row gap-6">
           {/* Cloud & DevOps */}
-          <div className={`flex-1 border border-[1px] border-opacity-20 rounded-xl p-5 ${cardColor.purple} transition-all duration-200 hover:bg-neutral-700/80 hover:scale-[1.015]`}>
+          <div className={`flex-1 border border-[1px] border-opacity-20 rounded-xl p-5 ${cardColor.purple} transition-all duration-200 hover:bg-neutral-700/80 hover:scale-[1.015] bg-black/80`}>
             <div className="flex items-center gap-2 mb-4">
               {skillGroups[2].icon}
               <span className={`font-semibold text-lg ${headingColor.purple}`}>{skillGroups[2].title}</span>
             </div>
             <div className="flex flex-wrap gap-2">
               {skillGroups[2].skills.map(skill => (
-                <span key={skill} className={`bg-neutral-900 text-gray-200 px-3 py-1 rounded-md text-sm font-medium transition-all duration-150 ${pillHover.purple}`}>
+                <span key={skill} className={`bg-black/80 text-gray-200 px-3 py-1 rounded-md text-sm font-medium transition-all duration-150 ${pillHover.purple}`}>
                   {skill}
                 </span>
               ))}
             </div>
           </div>
           {/* Databases */}
-          <div className={`flex-1 border border-[1px] border-opacity-20 rounded-xl p-5 ${cardColor.orange} transition-all duration-200 hover:bg-neutral-700/80 hover:scale-[1.015]`}>
+          <div className={`flex-1 border border-[1px] border-opacity-20 rounded-xl p-5 ${cardColor.orange} transition-all duration-200 hover:bg-neutral-700/80 hover:scale-[1.015] bg-black/80`}>
             <div className="flex items-center gap-2 mb-4">
               {skillGroups[3].icon}
               <span className={`font-semibold text-lg ${headingColor.orange}`}>{skillGroups[3].title}</span>
             </div>
             <div className="flex flex-wrap gap-2">
               {skillGroups[3].skills.map(skill => (
-                <span key={skill} className={`bg-neutral-900 text-gray-200 px-3 py-1 rounded-md text-sm font-medium transition-all duration-150 ${pillHover.orange}`}>
+                <span key={skill} className={`bg-black/80 text-gray-200 px-3 py-1 rounded-md text-sm font-medium transition-all duration-150 ${pillHover.orange}`}>
                   {skill}
                 </span>
               ))}
@@ -130,14 +130,14 @@ const Skills: React.FC = () => {
         {/* Row 4 */}
         <div className="flex flex-col md:flex-row gap-6">
           {/* Other */}
-          <div className={`flex-1 border border-[1px] border-opacity-20 rounded-xl p-5 ${cardColor.yellow} transition-all duration-200 hover:bg-neutral-700/80 hover:scale-[1.015]`}>
+          <div className={`flex-1 border border-[1px] border-opacity-20 rounded-xl p-5 ${cardColor.yellow} transition-all duration-200 hover:bg-neutral-700/80 hover:scale-[1.015] bg-black/80`}>
             <div className="flex items-center gap-2 mb-4">
               {skillGroups[4].icon}
               <span className={`font-semibold text-lg ${headingColor.yellow}`}>{skillGroups[4].title}</span>
             </div>
             <div className="flex flex-wrap gap-2">
               {skillGroups[4].skills.map(skill => (
-                <span key={skill} className={`bg-neutral-900 text-gray-200 px-3 py-1 rounded-md text-sm font-medium transition-all duration-150 ${pillHover.yellow}`}>
+                <span key={skill} className={`bg-black/80 text-gray-200 px-3 py-1 rounded-md text-sm font-medium transition-all duration-150 ${pillHover.yellow}`}>
                   {skill}
                 </span>
               ))}
