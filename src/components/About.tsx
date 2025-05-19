@@ -88,22 +88,22 @@ const About: React.FC = () => {
               </p>
             </div>
           </div>
-
+          
           <div ref={cardsRef} className="about-cards">
             {/* Mobile-optimized cards with grid layout */}
             <div className="md:hidden grid grid-cols-1 gap-1.5">
-              {infoCards.map((card, index) => (
-                <div 
-                  key={card.title}
+            {infoCards.map((card, index) => (
+              <div 
+                key={card.title}
                   className={`info-card bg-black/20 backdrop-blur-sm border ${card.borderColor} rounded-lg p-2
                     transition-all duration-300`}
-                  style={{ animationDelay: `${index * 0.1}s` }}
-                >
+                style={{ animationDelay: `${index * 0.1}s` }}
+              >
                   <div className="flex items-center gap-2">
                     <div className={`card-icon rounded-md p-1.5 ${card.iconBg} transition-all duration-300`}>
-                      {card.icon}
-                    </div>
-                    <div className="card-content">
+                  {card.icon}
+                </div>
+                <div className="card-content">
                       <h3 className="card-title text-xs font-semibold text-white">{card.title}</h3>
                       <p className="card-description text-[10px] text-neutral-300">{card.description}</p>
                     </div>
@@ -130,9 +130,9 @@ const About: React.FC = () => {
                       <h3 className="card-title text-sm font-semibold text-white">{card.title}</h3>
                       <p className="card-description text-xs text-neutral-300">{card.description}</p>
                     </div>
-                  </div>
                 </div>
-              ))}
+              </div>
+            ))}
             </div>
           </div>
         </div>

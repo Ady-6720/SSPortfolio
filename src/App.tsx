@@ -10,13 +10,32 @@ import ParallaxBackground from './components/ParallaxBackground';
 import Education from './components/Education';
 import Contact from './components/Contact';
 import BackToTop from './components/BackToTop';
+import { useState, useEffect, useRef } from 'react';
 
 function App() {
+  const [loading, setLoading] = useState(true);
+  const mainContentRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setLoading(false), 2000);
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="spinner-overlay">
+        <div className="spinner">
+          <div></div><div></div><div></div><div></div><div></div><div></div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <>
       <ParallaxBackground />
       <Navbar />
-      <main className="main-content overflow-y-scroll h-screen scroll-smooth">
+      <main ref={mainContentRef} className="main-content overflow-y-scroll h-screen scroll-smooth">
         <div id="hero-container" className="h-screen"><Hero /></div>
         <div id="about-container" className="h-screen"><About /></div>
         <div id="education-container" className="h-screen"><Education /></div>

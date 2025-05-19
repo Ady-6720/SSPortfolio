@@ -63,9 +63,9 @@
 }
 
 .skills-grid.skills-visible {
-  opacity: 1;
-  transform: translateY(0);
-}
+    opacity: 1;
+    transform: translateY(0);
+  }
 
 .info-card {
   border-width: 1px !important;
@@ -88,7 +88,7 @@
     padding: 30px 1rem;
     min-height: auto;
   }
-  
+
   .about-grid {
     gap: 1.5rem;
   }
@@ -103,13 +103,13 @@
   .info-card::after {
     display: none;
   }
-  
+
   /* Create space for bento grid */
   .about-content {
     display: flex;
     flex-direction: column;
   }
-  
+
   /* Reduce line height for mobile text */
   .about-text p {
     line-height: 1.4;
